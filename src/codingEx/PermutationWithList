@@ -1,0 +1,52 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static List<List<Integer>> perm(int[] a, int level) {
+		List<List<Integer>> res = new ArrayList<List<Integer>>();
+		if(level==a.length) {
+			List<Integer> curr = new ArrayList<Integer>();
+			res.add(curr);
+			return res;
+		}
+		int curr = a[level];
+		List<List<Integer>> retLists = perm(a,level+1);
+		//List<List<Integer>> moreLists = new ArrayList<List<Integer>>();
+		for(List<Integer> list: retLists) {
+			System.out.println(res.size() + " " + list.size());
+			for(int i=0;i<=list.size();i++) {
+				List<Integer> newList = insertAt(curr,list,i);
+				res.add(newList);
+			}
+		}
+		//res.addAll(moreLists);
+		//System.out.println(res.size());
+		return res;
+	}
+	
+	public static List<Integer> insertAt(int curr, List<Integer> oldList,int pos) {
+	//	System.out.println(list);
+		List<Integer> list = new ArrayList<Integer>();
+		list.addAll(oldList);
+		if(list.isEmpty()) {
+			list.add(curr);
+		}
+		else {
+			list.add(pos,curr);
+		}
+		return list;
+	}
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int[] arr = new int[]{3,5,6,8};
+//		List<List<Integer>> res = new ArrayList<List<Integer>>();
+		
+		List<List<Integer>> res = perm(arr,0);
+		System.out.println(res);
+	}
+}
