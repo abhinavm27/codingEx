@@ -1,0 +1,12 @@
+//This file captures dynamic programming conecpt based on maximum subarray.
+//Kadane's algorithm states that " By induction, if we know the maximum subarray sum at position i, then we can now the maximum subarray sum at position i+1."
+
+Pseudo Code for MaxSubArray:
+def maxSubArray(arr):
+  maxCurr=0;
+  maxSoFar=0;
+  for i in arr:
+    maxCurr = Math.max(arr[i]+maxCurr,maxCurr);
+    maxSoFar = ath.max(maxSoFar,maxCurr);
+  return maxSoFar;
+  
