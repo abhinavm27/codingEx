@@ -1,0 +1,90 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+
+class DP {
+	String firstName;
+	String lastname;
+	String middleName;
+	String postalCode;
+	String address;
+	String phoneNumber;
+	
+	DP() {
+		firstName="";
+		lastname="";
+		middleName="";
+		postalCode="";
+		address="";
+		phoneNumber="";
+	}
+	DP(Builder b) {
+		firstName=b.firstName;
+		lastname=b.lastname;
+		middleName=b.middleName;
+		postalCode=b.postalCode;
+		address=b.address;
+		phoneNumber=b.phoneNumber;
+	}
+	@Override
+	public String toString() {
+		String ret = "";
+		if(!firstName.equals("")) {
+			ret+=firstName +" ";
+		}
+		else if(!lastname.equals("")) {
+			ret+=lastname +" ";
+		}
+		return ret;
+	}
+	static class Builder {
+		String firstName="";
+	String lastname="";
+	String middleName="";
+	String postalCode="";
+	String address="";
+	String phoneNumber="";
+		Builder() {
+		}
+		public DP build() {
+			return new DP(this);
+		}
+		public Builder setFirstName(String str) {
+			firstName = str;
+			return this;
+		}
+		public Builder setLastName(String str) {
+			lastname = str;
+			return this;
+		}
+		public Builder setMiddleName(String str) {
+			middleName = str;
+			return this;
+		}
+		public Builder sePostalCode(String str) {
+			postalCode = str;
+			return this;
+		}
+		public Builder setAddress(String str) {
+			address = str;
+			return this;
+		}
+		public Builder setPhoneNumber(String str) {
+			phoneNumber = str;
+			return this;
+		}
+	}
+}
+class Ideone
+{
+	
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		DP o1 = new DP.Builder().setFirstName("Abhinav").build();
+		System.out.println(o1);
+	}
+}
